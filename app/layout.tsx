@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Noto_Sans_TC, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import Script from 'next/script' // 1. 引入 Script 元件
+import Script from 'next/script'
 import './globals.css'
 
 const notoSansTC = Noto_Sans_TC({
@@ -50,14 +50,14 @@ export default function RootLayout({
         {children}
         <Analytics />
 
-        {/* 2. 在這裡插入 tawk.to 腳本 */}
-        <Script id="tawk-to" strategy="lazyOnload">
+        {/* 這裡是 tawk.to 聊天小工具 */}
+        <Script id="tawk-to-script" strategy="lazyOnload">
           {`
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
             (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
             s1.async=true;
-            s1.src='https://embed.tawk.to/你的ID/預設'; // <-- 請在此處替換成你的實際連結
+            s1.src='https://embed.tawk.to/699c1555fb52bd1c39a647cf/1ji4r6lcs';
             s1.charset='UTF-8';
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
