@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Noto_Sans_TC, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script' // 1. 引入 Script 元件
 import './globals.css'
 
 const notoSansTC = Noto_Sans_TC({
@@ -12,8 +13,8 @@ const notoSansTC = Noto_Sans_TC({
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: '\u6eab\u6696\u5c0f\u93ae | \u53f0\u7063\u534a RP FiveM \u4f3a\u670d\u5668',
-  description: '\u6eab\u6696\u5c0f\u93ae - \u53f0\u7063\u534a RP FiveM \u4f3a\u670d\u5668 \u00b7 \u591a\u5143\u904a\u6232\u6a21\u5f0f \u00b7 \u5c08\u696d\u5718\u968a \u00b7 \u6d3b\u8e8d\u793e\u7fa4',
+  title: '溫暖小鎮 | 台灣半 RP FiveM 伺服器',
+  description: '溫暖小鎮 - 台灣半 RP FiveM 伺服器 · 多元遊戲模式 · 專業團隊 · 活躍社群',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -48,6 +49,21 @@ export default function RootLayout({
       <body className={`${notoSansTC.variable} font-sans antialiased`}>
         {children}
         <Analytics />
+
+        {/* 2. 在這裡插入 tawk.to 腳本 */}
+        <Script id="tawk-to" strategy="lazyOnload">
+          {`
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/你的ID/預設'; // <-- 請在此處替換成你的實際連結
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+          `}
+        </Script>
       </body>
     </html>
   )
